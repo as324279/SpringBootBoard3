@@ -2,6 +2,7 @@ package com.example.sbb.answer;
 import java.time.LocalDateTime;
 
 import com.example.sbb.question.Question;
+import com.example.sbb.user.SiteUser;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -17,6 +18,8 @@ import lombok.Setter;
 @Entity
 public class Answer {
 
+	private LocalDateTime modifyDate;
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
@@ -29,4 +32,7 @@ public class Answer {
 	private Question question;
 	
 	private LocalDateTime createDate;
+	
+	@ManyToOne
+	private SiteUser author;
 }

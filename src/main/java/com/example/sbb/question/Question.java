@@ -1,5 +1,7 @@
 package com.example.sbb.question;
 import java.time.LocalDateTime;
+import jakarta.persistence.ManyToOne;
+import com.example.sbb.user.SiteUser;
 
 import java.time.LocalDateTime; 
 import java.util.List;
@@ -21,6 +23,8 @@ import lombok.Setter;
 @Setter
 @Entity
 public class Question {
+	
+	private LocalDateTime modifyDate;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -36,5 +40,8 @@ public class Question {
 
 	@OneToMany(mappedBy = "question", cascade = CascadeType.REMOVE)
 	private List<Answer> answerList;
+	
+	@ManyToOne
+	private SiteUser author;
 	
 }
